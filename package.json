@@ -1,0 +1,13 @@
+{
+  "name": "scaffy",
+  "version": "1.0.0",
+  "description": "small project templating engine",
+  "repository": "semibran/scaffy",
+  "author": "semibran",
+  "license": "MIT",
+  "bin": "bin/scaffy.js",
+  "dependencies": {
+    "minimist": "^1.2.0",
+    "pixie": "^2.0.0"
+  }
+}
