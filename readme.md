@@ -2,7 +2,7 @@
 > small project scaffolder
 
 ```sh
-scaffy -i template -o project -- --name example
+scaffy src -o dest -- --name example
 ```
 
 ## install

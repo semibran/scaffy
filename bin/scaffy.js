@@ -7,33 +7,25 @@ var parse = require("minimist")
 var cwd = process.cwd()
 var args = process.argv.slice(2)
 var argv = parse(args, {
-  boolean: [ "help" ],
-  alias: {
-    h: "help",
-    i: "input",
-    o: "output"
-  },
+  "--": true,
+  alias: { o: "output" },
   default: {
     open: "{{",
     close: "}}"
   }
 })
 
-if (!argv.input) {
+var src = argv._[0]
+var dest = argv.output
+
+if (!src) {
   console.log("scaffy: no source path specified")
   process.exit()
 }
 
-if (!argv.output) {
-  console.log("scaffy: no destination path specified")
-  process.exit()
-}
-
-var src = join(cwd, argv.input)
-var dest = join(cwd, argv.output)
 var open = argv.open
 var close = argv.close
-var data = parse(argv._)
+var data = parse(argv["--"])
 delete data._
 
 vfs.read(src, (err, template) => {
@@ -41,7 +33,11 @@ vfs.read(src, (err, template) => {
   var source = JSON.stringify(template)
   var result = pixie.compile(pixie.parse(source, open, close), data)
   var tree = JSON.parse(result)
-  vfs.write(dest, tree, (err) => {
-    if (err) throw err
-  })
+  if (dest) {
+    vfs.write(dest, tree, (err) => {
+      if (err) throw err
+    })
+  } else {
+    console.log(tree)
+  }
 })
