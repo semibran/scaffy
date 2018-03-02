@@ -5,7 +5,9 @@
   "repository": "semibran/scaffy",
   "author": "semibran",
   "license": "MIT",
+  "main": "lib/scaffy.js",
   "bin": "bin/scaffy.js",
+  "keywords": [ "generator", "template" ],
   "dependencies": {
     "@semibran/fs-tree": "^1.0.0",
     "minimist": "^1.2.0",

@@ -1,15 +1,16 @@
 usage:
-  $ scaffy <template> <output> [options] -- [config options]
+  $ scaffy <src> [options] -- [config options]
 
 options:
-  -h, --help       show this help message
-  -v, --version    display package version
-  -i, --input      input path to read from (alternative to <template>)
-  -o, --output     output path to write to (alternative to <output>)
-  -c, --config     JSON config to use
-  -O, --open       tag to indicate the beginning of an expression (defaults to "{{")
-  -C, --close      tag to indicate the ending of an expression (defaults to "}}")
+  -h, --help     show this help message
+  -v, --version  display package version
+  -i, --input    path to source template (alternative to <src>)
+  -o, --output   path to which the resulting file tree is written (defaults to stdout)
+  -O, --open     tag indicating the beginning of an expression (defaults to "{{")
+  -C, --close    tag indicating the end of an expression (defaults to "}}")
 
 examples:
-  $ scaffy templates/example -o example -- --description "inline config"
-  $ scaffy templates/foo -o dev/bar -c config.json -O \${ -C \}
+  $ echo 'Hello {{world}}!' | scaffy template -- --world=Earth
+  $ scaffy templates/module -o example -- \
+  > --name=example \
+  > --description="An example module"

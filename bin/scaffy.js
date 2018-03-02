@@ -14,7 +14,6 @@ var argv = parse(args, {
     v: "version",
     i: "input",
     o: "output",
-    c: "config",
     O: "open",
     C: "close"
   }
@@ -32,30 +31,25 @@ if (argv.version) {
   process.exit()
 }
 
-var src = argv.input || argv._[0]
-var dest = argv.output || argv._[1]
-var config = argv.config
-var data = null
-if (config) {
-  var path = join(cwd, config)
-  try {
-    data = JSON.parse(fs.readFileSync(path, "utf8"))
-  }
-  catch (err) {
-    console.log(err.toString())
-    process.exit()
-  }
+var data = argv["--"]
+if (!data.length) {
+  data = null
 } else {
-  data = parse(argv["--"])
+  data = parse(data)
   delete data._
 }
 
+var src = argv.input || argv._[0]
 var opts = {
   data: data,
+  dest: argv.output,
   open: argv.open,
   close: argv.close,
 }
 
-scaffy(src, dest, opts, function (err) {
+scaffy(src, opts, function (err, tree) {
   if (err) return console.log(err.toString())
+  if (!opts.dest) {
+    console.log(tree)
+  }
 })
