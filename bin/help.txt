@@ -1,15 +1,15 @@
 usage:
-  $ scaffy <template> [options] -- [config options]
+  $ scaffy <template> <output> [options] -- [config options]
 
 options:
   -h, --help       show this help message
   -v, --version    display package version
   -i, --input      input path to read from (alternative to <template>)
-  -o, --output     output path to write to (defaults to stdout)
+  -o, --output     output path to write to (alternative to <output>)
   -c, --config     JSON config to use
   -O, --open       tag to indicate the beginning of an expression (defaults to "{{")
   -C, --close      tag to indicate the ending of an expression (defaults to "}}")
 
 examples:
-  $ scaffy templates/example -- --description "inline config"
-  $ scaffy templates/foo -o dev/bar -c config.json -O "${" -C "}"
+  $ scaffy templates/example -o example -- --description "inline config"
+  $ scaffy templates/foo -o dev/bar -c config.json -O \${ -C \}
