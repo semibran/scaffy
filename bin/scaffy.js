@@ -1,40 +1,67 @@
 #!/usr/bin/env node
-var vfs = require("../lib/vfs")
-var pixie = require("pixie")
-var fs = require("fs")
-var join = require("path").join
-var parse = require("minimist")
-var cwd = process.cwd()
-var args = process.argv.slice(2)
-var argv = parse(args, {
+const { join } = require("path")
+const { readFileSync } = require("fs")
+const { read, write } = require("@semibran/fs-tree")
+const pixie = require("pixie")
+const parse = require("minimist")
+const cwd = process.cwd()
+const args = process.argv.slice(2)
+const argv = parse(args, {
   "--": true,
-  alias: { o: "output" },
+  boolean: [ "help", "version" ],
+  alias: {
+    h: "help",
+    v: "version",
+    i: "input",
+    o: "output",
+    c: "config",
+    O: "open",
+    C: "close"
+  },
   default: {
     open: "{{",
     close: "}}"
   }
 })
 
-var src = argv._[0]
-var dest = argv.output
+if (!args.length || argv.help) {
+  let path = join(__dirname, "../help")
+  let help = readFileSync(path, "utf8")
+  console.log(help)
+  process.exit()
+}
+
+if (argv.version) {
+  console.log("v1.0.0")
+  process.exit()
+}
+
+let src = argv.input || argv._[0]
+let dest = argv.output
 
 if (!src) {
   console.log("scaffy: no source path specified")
   process.exit()
 }
 
-var open = argv.open
-var close = argv.close
-var data = parse(argv["--"])
-delete data._
+let open = argv.open
+let close = argv.close
+let config = argv.config
+let data = null
+if (config) {
+  data = JSON.parse(readFileSync(config))
+} else {
+  data = parse(argv["--"])
+  delete data._
+}
 
-vfs.read(src, (err, template) => {
+read(src, (err, template) => {
   if (err) throw err
-  var source = JSON.stringify(template)
-  var result = pixie.compile(pixie.parse(source, open, close), data)
-  var tree = JSON.parse(result)
+  let source = JSON.stringify(template)
+  let result = pixie.compile(pixie.parse(source, open, close), data)
+  let tree = JSON.parse(result)
   if (dest) {
-    vfs.write(dest, tree, (err) => {
+    write(dest, tree, (err) => {
       if (err) throw err
     })
   } else {

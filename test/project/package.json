@@ -1,0 +1,10 @@
+{
+  "name": "foo",
+  "version": "0.0.0",
+  "description": "undefined",
+  "repository": "undefined/foo",
+  "author": "undefined",
+  "license": "MIT",
+  "main": "lib/foo.js",
+  "keywords": []
+}
