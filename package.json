@@ -1,15 +1,18 @@
 {
   "name": "scaffy",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "tiny project scaffolding tool",
   "repository": "semibran/scaffy",
   "author": "semibran",
   "license": "MIT",
   "main": "lib/scaffy.js",
   "bin": "bin/scaffy.js",
-  "keywords": [ "generator", "template" ],
+  "keywords": [
+    "generator",
+    "template"
+  ],
   "dependencies": {
-    "@semibran/fs-tree": "^1.0.0",
+    "@semibran/fs-tree": "^1.1.0",
     "minimist": "^1.2.0",
     "pixie": "^2.0.0"
   }
