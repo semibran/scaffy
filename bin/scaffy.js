@@ -35,7 +35,7 @@ var data = argv["--"]
 if (!data.length) {
 	data = null
 } else {
-	data = parse(data)
+	data = parse(data, { string: [ "--", "_" ] })
 	delete data._
 }
 
