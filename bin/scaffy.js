@@ -42,14 +42,12 @@ if (!data.length) {
 var src = argv.input || argv._[0]
 var opts = {
 	data: data,
-	dest: argv.output,
+	dest: argv.output || process.cwd(),
 	open: argv.open,
 	close: argv.close,
 }
 
-scaffy(src, opts, function (err, tree) {
+scaffy(src, opts, function (err) {
 	if (err) return console.log(err.toString())
-	if (!opts.dest) {
-		console.log(tree)
-	}
+	console.log(`Write to ${opts.dest} successful`)
 })

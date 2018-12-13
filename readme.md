@@ -7,23 +7,7 @@ Install it globally through npm:
 npm i -g scaffy
 ```
 
-Running `scaffy src -o dest` will essentially produce an identical result to that of the `cp` command on Unix-like operating systems. The real magic happens when we pass in some options.
-
-```sh
-$ echo 'Hello {{world}}!' >> template
-$ scaffy template -- --world=Earth
-Hello Earth!
-```
-
-As we can see, any options succeeding the `--` are treated as key-value pairs. The output defaults to stdout, but we can change that by adding an extra `dest` argument:
-
-```sh
-$ scaffy template -o greeting -- --world=Mars
-$ cat greeting
-Hello Mars!
-```
-
-We can naturally take this example further to fulfill a more applicable purpose: project scaffolding. Consider the following directory structure:
+The following represents an example directory to be used as a template. Notice the fields in double braces.
 
 ```
 templates/module
@@ -63,7 +47,7 @@ options:
   -h, --help     show this help message
   -v, --version  display package version
   -i, --input    path to source template (alternative to <src>)
-  -o, --output   path to which the resulting file tree is written (defaults to stdout)
+  -o, --output   path to which the resulting file tree is written (defaults to cwd)
   -O, --open     tag indicating the beginning of an expression (defaults to "{{")
   -C, --close    tag indicating the end of an expression (defaults to "}}")
 
@@ -80,7 +64,7 @@ Replaces all instances of the keys provided by `opts.data` within `src` and writ
 
 Options:
 * `data`: map detailing the keys to be replaced within the given template and their corresponding values (defaults to an empty object)
-* `dest`: path to which the resulting file tree is written
+* `dest`: path to which the resulting file tree is written (defaults to cwd)
 * `open`: tag indicating the beginning of an expression (defaults to `{{`)
 * `close`: tag indicating the end of an expression (defaults to `}}`)
 
