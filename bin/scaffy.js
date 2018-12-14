@@ -79,7 +79,7 @@ function write(data) {
 	opts.data = data
 	scaffy(src, opts, function (err) {
 		if (err) return console.log(err.toString())
-		console.log("write to `" + path.join(process.cwd(), opts.dest) + "` successful")
+		console.log("write to `" + path.normalize(opts.dest) + "` successful")
 	})
 }
 
