@@ -18,12 +18,15 @@ templates/module
 └── readme.md       -> '# {{name}}\n> {{description}}'
 ```
 
-Passing this directory into scaffy with the appropriate options results in a copy of the original template with all the provided expressions filled in, like so.
+Passing this directory into scaffy will bring up a prompt that enables you to fill in the necessary fields.
 
 ```sh
-$ scaffy templates/module -o example -- \
-> --name=example \
-> --description="An example module"
+$ scaffy templates/module -o example
+scaffy v1.0.0
+using template `module`
+- name: example
+- description: An example module
+write to `/foo/bar/example` successful
 
 $ cat example/readme.md
 # example
@@ -33,7 +36,15 @@ $ ls example/lib
 example.js
 ```
 
-This template can be expanded upon even further to cover logic-less project templates as large as you deem necessary.
+Alternatively, pass in template config directly following a `--`:
+
+```
+$ scaffy templates/module -o example -- \
+> --name=example \
+> --description="An example module"
+```
+
+This concept can be further expanded upon to cover logic-less templates as large as you deem necessary.
 
 ## usage
 [![npm badge]][npm package]
@@ -41,7 +52,7 @@ This template can be expanded upon even further to cover logic-less project temp
 ## CLI
 ```
 usage:
-  $ scaffy <src> [options] -- [config options]
+  $ scaffy <src> [options] -- [template config]
 
 options:
   -h, --help     show this help message
@@ -51,7 +62,8 @@ options:
   -O, --open     tag indicating the beginning of an expression (defaults to "{{")
   -C, --close    tag indicating the end of an expression (defaults to "}}")
 
-example:
+examples:
+  $ scaffy templates/module -o example
   $ scaffy templates/module -o example -- \
   > --name=example \
   > --description="An example module"

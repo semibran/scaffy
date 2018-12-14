@@ -1,5 +1,5 @@
 usage:
-  $ scaffy <src> [options] -- [config options]
+  $ scaffy <src> [options] -- [template config]
 
 options:
   -h, --help     show this help message
@@ -10,7 +10,7 @@ options:
   -C, --close    tag indicating the end of an expression (defaults to "}}")
 
 examples:
-  $ echo 'Hello {{world}}!' | scaffy template -- --world=Earth
+  $ scaffy templates/module -o example
   $ scaffy templates/module -o example -- \
   > --name=example \
   > --description="An example module"
