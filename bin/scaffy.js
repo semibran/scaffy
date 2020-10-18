@@ -48,7 +48,7 @@ if (!data.length) {
 var src = argv.input || argv._[0]
 var opts = {
 	data: data,
-	dest: argv.output || process.cwd(),
+	dest: argv.output,
 	open: argv.open,
 	close: argv.close,
 }
@@ -77,6 +77,7 @@ scan(src, opts, function (err, keywords) {
 
 function write(data) {
 	opts.data = data
+	opts.dest = opts.dest || data.name
 	scaffy(src, opts, function (err) {
 		if (err) return console.log(err.toString())
 		console.log("write to `" + path.normalize(opts.dest) + "` successful")
