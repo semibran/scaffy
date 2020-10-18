@@ -74,7 +74,7 @@ examples:
 ### API
 
 #### `scaffy(src, opts, cb(err, tree))`
-Replaces all instances of the keys provided by `opts.data` within `src` and writes to `opts.dest`, if provided. The resulting file tree is passed to `cb` via `tree`, which takes the form `folder : { name -> folder | file }`.
+Replaces all instances of the keys provided by `opts.data` within `src` and writes to one of `opts.dest`, `opts.data.name`, or the current working directory in that order. The resulting file tree is passed to `cb` via `tree`, which takes the form `folder : { name -> folder | file }`.
 
 Options:
 * `data`: map detailing the keys to be replaced within the given template and their corresponding values (defaults to an empty object)

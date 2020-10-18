@@ -77,7 +77,7 @@ scan(src, opts, function (err, keywords) {
 
 function write(data) {
 	opts.data = data
-	opts.dest = opts.dest || data.name
+	opts.dest = opts.dest || data.name || process.cwd()
 	scaffy(src, opts, function (err) {
 		if (err) return console.log(err.toString())
 		console.log("write to `" + path.normalize(opts.dest) + "` successful")
