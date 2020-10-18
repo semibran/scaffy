@@ -1,5 +1,7 @@
 # scaffy
-This tool provides a small project scaffolder which customizes a given template directory using a user-defined map.
+> tiny project scaffolding tool
+
+This tool customizes a given template directory using a user-defined map.
 
 Install it globally through npm:
 
@@ -21,7 +23,7 @@ templates/module
 Passing this directory into scaffy will bring up a prompt that enables you to fill in the necessary fields.
 
 ```sh
-$ scaffy templates/module -o example
+$ scaffy templates/module
 scaffy v1.0.2
 using template `module`
 - name: example
@@ -39,7 +41,7 @@ example.js
 Alternatively, pass in template config directly following a `--`:
 
 ```
-$ scaffy templates/module -o example -- \
+$ scaffy templates/module -- \
 > --name=example \
 > --description="An example module"
 ```
@@ -49,7 +51,7 @@ This concept can be further expanded upon to cover logic-less templates as large
 ## usage
 [![npm badge]][npm package]
 
-## CLI
+### CLI
 ```
 usage:
   $ scaffy <src> [options] -- [template config]
@@ -58,7 +60,7 @@ options:
   -h, --help     show this help message
   -v, --version  display package version
   -i, --input    path to source template (alternative to <src>)
-  -o, --output   path to which the resulting file tree is written (defaults to cwd)
+  -o, --output   path to which the resulting file tree is written (defaults to name arg)
   -O, --open     tag indicating the beginning of an expression (defaults to "{{")
   -C, --close    tag indicating the end of an expression (defaults to "}}")
 
@@ -69,14 +71,14 @@ examples:
   > --description="An example module"
 ```
 
-## API
+### API
 
-### `scaffy(src, opts, cb(err, tree))`
+#### `scaffy(src, opts, cb(err, tree))`
 Replaces all instances of the keys provided by `opts.data` within `src` and writes to `opts.dest`, if provided. The resulting file tree is passed to `cb` via `tree`, which takes the form `folder : { name -> folder | file }`.
 
 Options:
 * `data`: map detailing the keys to be replaced within the given template and their corresponding values (defaults to an empty object)
-* `dest`: path to which the resulting file tree is written (defaults to cwd)
+* `dest`: path to which the resulting file tree is written (defaults to `opts.data.name`)
 * `open`: tag indicating the beginning of an expression (defaults to `{{`)
 * `close`: tag indicating the end of an expression (defaults to `}}`)
 
