@@ -1,7 +1,5 @@
 # scaffy
-> tiny project scaffolding tool
-
-This tool customizes a given template directory using a user-defined map.
+This tool is a tiny project scaffolder that customizes a given template directory using a user-defined map.
 
 Install it globally through npm:
 
@@ -24,7 +22,7 @@ Passing this directory into scaffy will bring up a prompt that enables you to fi
 
 ```sh
 $ scaffy templates/module
-scaffy v1.0.2
+scaffy v1.1.0
 using template `module`
 - name: example
 - description: An example module
