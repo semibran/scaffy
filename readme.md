@@ -22,7 +22,7 @@ Passing this directory into scaffy will bring up a prompt that enables you to fi
 
 ```sh
 $ scaffy templates/module
-scaffy v3.0.0
+scaffy v3.0.1
 using template `module`
 (1/2) name: example
 (2/2) description: An example module
