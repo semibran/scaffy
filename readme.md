@@ -24,8 +24,8 @@ Passing this directory into scaffy will bring up a prompt that enables you to fi
 $ scaffy templates/module
 scaffy v2.0.0
 using template `module`
-- name: example
-- description: An example module
+(1/2) name: example
+(2/2) description: An example module
 write to `/foo/bar/example` successful
 
 $ cat example/readme.md
@@ -36,15 +36,6 @@ $ ls example/lib
 example.js
 ```
 
-Alternatively, pass in template config directly following a `--`:
-
-```
-$ cd templates/module
-$ scaffy -- \
-> --name=example \
-> --description="An example module"
-```
-
 This concept can be further expanded upon to cover logic-less templates as large as you deem necessary.
 
 ## usage
@@ -53,21 +44,19 @@ This concept can be further expanded upon to cover logic-less templates as large
 ### CLI
 ```
 usage:
-  $ scaffy [src] [options] -- [template config]
+  $ scaffy [src] [options]
 
 options:
   -h, --help     show this help message
   -v, --version  display package version
-  -i, --input    path to source template (alternative to <src>)
+  -i, --input    path to source template (alias for <src>)
   -o, --output   path to which the resulting file tree is written (defaults to name arg)
   -O, --open     tag indicating the beginning of an expression (defaults to "{{")
   -C, --close    tag indicating the end of an expression (defaults to "}}")
 
 examples:
-  $ scaffy templates/module -o example
-  $ scaffy templates/module -o example -- \
-  > --name=example \
-  > --description="An example module"
+  $ scaffy templates/module
+  $ scaffy templates/module -o new-directory
 ```
 
 ### API
