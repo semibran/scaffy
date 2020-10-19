@@ -59,13 +59,15 @@ scan(src, opts, function (err, keywords) {
 			}
 		}
 
+		keywords.sort()
 		keywords.sort(function (a, b) {
 			return findpriority(a) - findpriority(b)
 		})
 
 		function findpriority(keyword) {
 			var index = priority.indexOf(keyword)
-			return index >= 0 ? index : parseInt(keyword[0], 36) * keywords.length
+			if (index >= 0) return index
+			return keywords.indexOf(keyword) + priority.length
 		}
 
 		var index = 0
@@ -85,20 +87,17 @@ function write(data) {
 }
 
 function ask(keywords, index, data, cb) {
-	var keyword = keywords[index]
-	if (keyword) {
-		index++
-		var prompt = format(keywords, keyword, index)
-		io.question(prompt, function (value) {
-			data[keyword] = value
-			if (keywords[index]) {
-				ask(keywords, index, data, cb)
-			}
-		})
-	} else {
-		cb(data)
-		io.close()
-	}
+	var keyword = keywords[index++]
+	var prompt = format(keywords, keyword, index)
+	io.question(prompt, function (value) {
+		data[keyword] = value
+		if (keywords[index]) {
+			ask(keywords, index, data, cb)
+		} else {
+			cb(data)
+			io.close()
+		}
+	})
 }
 
 function format(keywords, keyword, index, value) {
