@@ -39,7 +39,8 @@ example.js
 Alternatively, pass in template config directly following a `--`:
 
 ```
-$ scaffy templates/module -- \
+$ cd templates/module
+$ scaffy -- \
 > --name=example \
 > --description="An example module"
 ```
@@ -52,7 +53,7 @@ This concept can be further expanded upon to cover logic-less templates as large
 ### CLI
 ```
 usage:
-  $ scaffy <src> [options] -- [template config]
+  $ scaffy [src] [options] -- [template config]
 
 options:
   -h, --help     show this help message
@@ -72,11 +73,11 @@ examples:
 ### API
 
 #### `scaffy(src, opts, cb(err, tree))`
-Replaces all instances of the keys provided by `opts.data` within `src` and writes to one of `opts.dest`, `opts.data.name`, or the current working directory in that order. The resulting file tree is passed to `cb` via `tree`, which takes the form `folder : { name -> folder | file }`.
+Replaces all instances of the keys provided by `opts.data` within `src`. The resulting file tree is passed to `cb` via `tree`, which takes the form `folder : { name : folder | file }`.
 
 Options:
 * `data`: map detailing the keys to be replaced within the given template and their corresponding values (defaults to an empty object)
-* `dest`: path to which the resulting file tree is written (defaults to `opts.data.name`)
+* `dest`: path to which the resulting file tree is written (defaults to `src`)
 * `open`: tag indicating the beginning of an expression (defaults to `{{`)
 * `close`: tag indicating the end of an expression (defaults to `}}`)
 
