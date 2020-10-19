@@ -1,13 +1,13 @@
 dependencies:
-  '@semibran/fs-tree': 1.1.0
+  '@semibran/fs-tree': 1.2.0
   minimist: 1.2.5
   pixie: 2.0.0
 lockfileVersion: 5.1
 packages:
-  /@semibran/fs-tree/1.1.0:
+  /@semibran/fs-tree/1.2.0:
     dev: false
     resolution:
-      integrity: sha512-FKOZpblEXwS50HoJP5ZEZ9CzhybIp06kKlCqxQLd7iwDUREUp6rslCkYC9x/zrdzV3qWtD4Rb3SSTMuMp88dSA==
+      integrity: sha512-giUliHZdp9PrVaI5Skwe60PEcnhenHcSHovgx38Fv+Y/KdSYod3Jp9nS+j+w01Hg5n5TMZlRp5ZV4QL0Q8DJnw==
   /minimist/1.2.5:
     dev: false
     resolution:
@@ -19,6 +19,6 @@ packages:
     resolution:
       integrity: sha512-tXOSkDwIkCRjPR/SdZ3jitXq7GGIWgctseSnw9y1QIx+j4VoiY2WyTwvCM/NVA292QWq/J3SBFL0K3QGAEX9Mg==
 specifiers:
-  '@semibran/fs-tree': ^1.1.0
+  '@semibran/fs-tree': ^1.2.0
   minimist: ^1.2.0
   pixie: ^2.0.0

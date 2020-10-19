@@ -1,4 +1,4 @@
 node_modules
-package-lock.json
-shrinkwrap.yaml
+.DS_Store
+*.swp
 pnpm-debug.log

@@ -9,10 +9,11 @@
   "bin": "bin/scaffy.js",
   "keywords": [
     "generator",
-    "template"
+    "template",
+    "scaffold"
   ],
   "dependencies": {
-    "@semibran/fs-tree": "^1.1.0",
+    "@semibran/fs-tree": "^1.2.0",
     "minimist": "^1.2.0",
     "pixie": "^2.0.0"
   }

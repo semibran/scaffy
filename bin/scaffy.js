@@ -26,7 +26,7 @@ var io = readline.createInterface({
 	output: process.stdout
 })
 
-if (!args.length || argv.help) {
+if (argv.help) {
 	var help = fs.readFileSync(path.join(__dirname, "help.txt"), "utf8")
 	console.log(help)
 	process.exit()
@@ -45,7 +45,7 @@ if (!data.length) {
 	delete data._
 }
 
-var src = argv.input || argv._[0]
+var src = argv.input || argv._[0] || process.cwd()
 var opts = {
 	data: data,
 	dest: argv.output,
@@ -77,7 +77,7 @@ scan(src, opts, function (err, keywords) {
 
 function write(data) {
 	opts.data = data
-	opts.dest = opts.dest || data.name || process.cwd()
+	opts.dest = opts.dest || src || data.name || process.cwd()
 	scaffy(src, opts, function (err) {
 		if (err) return console.log(err.toString())
 		console.log("write to `" + path.normalize(opts.dest) + "` successful")
