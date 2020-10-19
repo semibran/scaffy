@@ -55,7 +55,7 @@ options:
   -C, --close    tag indicating the end of an expression (defaults to "}}")
 
 examples:
-  $ scaffy templates/module
+  $ scaffy
   $ scaffy templates/module -o new-directory
 ```
 
