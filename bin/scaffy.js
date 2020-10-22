@@ -47,11 +47,12 @@ var opts = {
 }
 
 console.log("scaffy v" + pkg.version)
-console.log("using template `" + path.basename(src) + "`")
 
 scan(src, opts, function (err, keywords) {
 	if (err) throw err
 	if (keywords.length) {
+		console.log("Using template `" + path.basename(src) + "`")
+
 		for (var i = 0; i < keywords.length; i++) {
 			var keyword = keywords[i]
 			if (data[keyword]) {
@@ -73,7 +74,8 @@ scan(src, opts, function (err, keywords) {
 		var index = 0
 		ask(keywords, index, data, write)
 	} else {
-		write(data)
+		console.log("No {{tags}} found in template `" + path.basename(src) + "`. Please specify a valid template.")
+		process.exit()
 	}
 })
 
@@ -82,7 +84,7 @@ function write(data) {
 	opts.dest = opts.dest || src || data.name || process.cwd()
 	scaffy(src, opts, function (err) {
 		if (err) return console.log(err.toString())
-		console.log("write to `" + path.normalize(opts.dest) + "` successful")
+		console.log("Write to `" + path.normalize(opts.dest) + "` successful")
 	})
 }
 
