@@ -1,24 +1,31 @@
+lockfileVersion: '6.0'
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
 dependencies:
-  '@semibran/fs-tree': 1.2.0
-  minimist: 1.2.5
-  pixie: 2.0.0
-lockfileVersion: 5.1
+  '@semibran/fs-tree':
+    specifier: ^1.2.0
+    version: 1.2.0
+  minimist:
+    specifier: ^1.2.0
+    version: 1.2.6
+  pixie:
+    specifier: ^2.0.0
+    version: 2.0.0
+
 packages:
-  /@semibran/fs-tree/1.2.0:
+
+  /@semibran/fs-tree@1.2.0:
+    resolution: {integrity: sha512-giUliHZdp9PrVaI5Skwe60PEcnhenHcSHovgx38Fv+Y/KdSYod3Jp9nS+j+w01Hg5n5TMZlRp5ZV4QL0Q8DJnw==}
     dev: false
-    resolution:
-      integrity: sha512-giUliHZdp9PrVaI5Skwe60PEcnhenHcSHovgx38Fv+Y/KdSYod3Jp9nS+j+w01Hg5n5TMZlRp5ZV4QL0Q8DJnw==
-  /minimist/1.2.5:
+
+  /minimist@1.2.6:
+    resolution: {integrity: sha512-Jsjnk4bw3YJqYzbdyBiNsPWHPfO++UGG749Cxs6peCu5Xg4nrena6OVxOYxrQTqww0Jmwt+Ref8rggumkTLz9Q==}
     dev: false
-    resolution:
-      integrity: sha512-FM9nNUYrRBAELZQT3xeZQ7fmMOBg6nWNmJKTcgsJeaLstP/UODVpGsr5OhXhhXg6f+qtJ8uiZ+PUxkDWcgIXLw==
-  /pixie/2.0.0:
+
+  /pixie@2.0.0:
+    resolution: {integrity: sha512-tXOSkDwIkCRjPR/SdZ3jitXq7GGIWgctseSnw9y1QIx+j4VoiY2WyTwvCM/NVA292QWq/J3SBFL0K3QGAEX9Mg==}
+    engines: {node: '>=4'}
     dev: false
-    engines:
-      node: '>=4'
-    resolution:
-      integrity: sha512-tXOSkDwIkCRjPR/SdZ3jitXq7GGIWgctseSnw9y1QIx+j4VoiY2WyTwvCM/NVA292QWq/J3SBFL0K3QGAEX9Mg==
-specifiers:
-  '@semibran/fs-tree': ^1.2.0
-  minimist: ^1.2.0
-  pixie: ^2.0.0
